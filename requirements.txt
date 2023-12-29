@@ -5,4 +5,4 @@ sqlalchemy==1.4.42
 passlib==1.7.4
 python_jose==3.3.0
 python-multipart>=0.0.5
-argon2-cffi>=20.1.0,<21.0.0
+argon2_cffi>=21.0.0
