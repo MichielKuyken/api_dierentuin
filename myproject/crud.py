@@ -14,7 +14,7 @@ def get_managers(db: Session, skip: int = 0, limit: int = 100):
 
 
 def create_manager(db: Session, manager: schemas.ManagerCreate):
-    db_manager = models.Manager(manager_nummer=manager.manager_nummer, voornaam=manager.voornaam, achternaam=manager.achternaam)
+    db_manager = models.Manager(**manager.dict())
     db.add(db_manager)
     db.commit()
     db.refresh(db_manager)
