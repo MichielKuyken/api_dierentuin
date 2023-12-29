@@ -11,7 +11,6 @@ class Manager(Base):
     voornaam = Column(String)
     achternaam = Column(String)
     manager_nummer = Column(String, unique=True, index=True)
-    password = Column(String)
 
     regios = relationship("Regio", back_populates="managers")
 
