@@ -1,6 +1,6 @@
 version: "3.9"
 services:
- api-social-media:
+ api-dierentuin:
   image: mrhysters/api_dierentuin
   ports:
     - "8000:8000"
