@@ -104,13 +104,12 @@ def get_eigenaars(db: Session, skip: int = 0, limit: int = 100):
 
 
 def create_eigenaar(db: Session, eigenaar: schemas.EigenaarCreate):
-    if len(db.query(models.Eigenaar).all()) == 0:
-        hashed_password = auth.get_password_hash(eigenaar.password)
-        db_eigenaar = models.Eigenaar(email=eigenaar.email, password=hashed_password, voornaam=eigenaar.voornaam, achternaam=eigenaar.achternaam)
-        db.add(db_eigenaar)
-        db.commit()
-        db.refresh(db_eigenaar)
-        return "Eigenaar successfully created!"
+    hashed_password = auth.get_password_hash(eigenaar.password)
+    db_eigenaar = models.Eigenaar(email=eigenaar.email, password=hashed_password, voornaam=eigenaar.voornaam, achternaam=eigenaar.achternaam)
+    db.add(db_eigenaar)
+    db.commit()
+    db.refresh(db_eigenaar)
+    return "Eigenaar successfully created!"
 
 
 def delete_eigenaar(db: Session, eigenaar: schemas.Eigenaar):

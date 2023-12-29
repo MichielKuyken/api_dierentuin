@@ -206,8 +206,8 @@ def create_eigenaar(eigenaar: schemas.EigenaarCreate, db: Session = Depends(get_
 
 
 @app.get("/eigenaar/{eigenaar_email}", response_model=schemas.Eigenaar)
-def read_eigenaar(email: str, db: Session = Depends(get_db)):
-    eigenaar = crud.get_eigenaar(db, email=email)
+def read_eigenaar(eigenaar_email: str, db: Session = Depends(get_db)):
+    eigenaar = crud.get_eigenaar(db, email=eigenaar_email)
     return eigenaar
 
 
