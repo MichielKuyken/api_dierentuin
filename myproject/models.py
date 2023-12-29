@@ -30,9 +30,9 @@ class Dier(Base):
     id = Column(Integer, primary_key=True, index=True)
     diersoort = Column(String, unique=True)
     hoeveelheid = Column(Integer)
-    manager_id = Column(Integer, ForeignKey("managers.id"))
+    regio_id = Column(Integer, ForeignKey("regios.id"))
 
-    regios = relationship("Regio", back_populates="managers")
+    regios = relationship("Regio", back_populates="dieren")
 
 
 class Eigenaar(Base):
