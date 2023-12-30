@@ -211,12 +211,6 @@ def create_eigenaar(eigenaar: schemas.EigenaarCreate, db: Session = Depends(get_
     return crud.create_eigenaar(db=db, eigenaar=eigenaar)
 
 
-@app.get("/eigenaar/{eigenaar_email}", response_model=schemas.Eigenaar)
-def read_eigenaar(eigenaar_email: str, db: Session = Depends(get_db)):
-    eigenaar = crud.get_eigenaar(db, email=eigenaar_email)
-    return eigenaar
-
-
 @app.delete("/eigenaar/{eigenaar_email}")
 def delete_eigenaar(email: str, db: Session = Depends(get_db), token: str = Depends(oauth2_scheme)):
     current_eigenaar = auth.get_current_eigenaar(db, token)

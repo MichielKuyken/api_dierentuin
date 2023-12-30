@@ -32,7 +32,7 @@ def update_manager(db: Session, existing_manager: models.Manager, manager_update
         setattr(existing_manager, key, value)
     db.commit()
     db.refresh(existing_manager)
-    return existing_manager
+    return "Manager successfully updated"
 
 
 def get_regio(db: Session, regionaam: str):

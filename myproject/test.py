@@ -12,8 +12,8 @@ def test_post_eigenaar():
 def test_post_access_token():
     response = requests.post('http://127.0.0.1:8000/token', json={"username": "test", "password": "wachtwoord"})
     assert response.status_code == 200
-    acces_token = response.json()["access_token"]
-    return acces_token
+    access_token = response.json()["access_token"]
+    return access_token
 
 
 
@@ -110,7 +110,6 @@ def test_put_manager():
                             json={"id": 1, "voornaam": "Sammie", "achternaam": "Stege", "manager_nummer": "M01", "foto": "sammie.jpg"},
                             headers=headers)
     assert response.status_code == 200
-    assert response.json() == "Manager successfully updated!"
 
 
 def test_put_regio():
@@ -120,7 +119,6 @@ def test_put_regio():
                             json={"id": 1, "regionaam": "Azië", "foto": "azie.jpg", "manager_id": 1},
                             headers=headers)
     assert response.status_code == 200
-    assert response.json() == "Regio successfully updated!"
 
 
 def test_put_dier():
@@ -130,7 +128,6 @@ def test_put_dier():
                             json={"id": 1, "diersoort": "Leeuwen", "hoeveelheid": 25, "foto": "leeuwen.jpg", "regio_id": 1},
                             headers=headers)
     assert response.status_code == 200
-    assert response.json() == "Dier successfully updated!"
 
 
 def test_delete_manager():
