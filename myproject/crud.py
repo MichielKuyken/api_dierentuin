@@ -69,8 +69,8 @@ def get_dier(db: Session, diersoort: str):
     return db.query(models.Dier).filter(models.Dier.diersoort == diersoort).first()
 
 
-def get_dier_by_regio(db: Session, regio_id: int, skip: int = 0, limit: int = 100):
-    return db.query(models.Dier).filter(models.Dier.regio_id == regio_id).offset(skip).limit(limit).all()
+def get_dier_by_regio(db: Session, regio_id: int):
+    return db.query(models.Dier).filter(models.Dier.regio_id == regio_id).all()
 
 
 def get_dieren(db: Session, skip: int = 0, limit: int = 100):

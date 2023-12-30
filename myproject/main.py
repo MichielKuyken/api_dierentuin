@@ -174,9 +174,9 @@ def read_dier(diersoort: str, db: Session = Depends(get_db)):
     return dier
 
 
-@app.get("/dieren/{regio_id}", response_model=list[schemas.Dier])
-def read_dier_by_regio(regio_id: int, skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
-    dieren = crud.get_dier_by_regio(db, regio_id=regio_id, skip=skip, limit=limit)
+@app.get("/dier/{regio_id}", response_model=list[schemas.Dier])
+def read_dier_by_regio(regio_id: int, db: Session = Depends(get_db)):
+    dieren = crud.get_dier_by_regio(db, regio_id=regio_id)
     return dieren
 
 
