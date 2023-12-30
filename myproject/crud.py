@@ -74,7 +74,7 @@ def get_dieren(db: Session, skip: int = 0, limit: int = 100):
 
 
 def create_dier(db: Session, dier: schemas.DierCreate):
-    db_dier = models.Dier(diersoort=dier.diersoort, hoeveelheid=dier.hoeveelheid, regio_id=dier.regio_id, manager_id=dier.manager_id)
+    db_dier = models.Dier(diersoort=dier.diersoort, hoeveelheid=dier.hoeveelheid, regio_id=dier.regio_id)
     db.add(db_dier)
     db.commit()
     db.refresh(db_dier)

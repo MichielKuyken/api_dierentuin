@@ -10,29 +10,30 @@ class Manager(Base):
     id = Column(Integer, primary_key=True, index=True)
     voornaam = Column(String)
     achternaam = Column(String)
-    manager_nummer = Column(String, unique=True, index=True)
+    manager_nummer = Column(String)
 
-    dieren = relationship("Dier", back_populates="managers")
+    regios = relationship("Regio", back_populates="managers")
 
 
 class Regio(Base):
     __tablename__ = "regios"
     id = Column(Integer, primary_key=True, index=True)
-    regionaam = Column(String, unique=True)
+    regionaam = Column(String)
+    manager_id = Column(Integer, ForeignKey("managers.id"))
 
     dieren = relationship("Dier", back_populates="regios")
+    managers = relationship("Manager", back_populates="regios")
 
 
 class Dier(Base):
     __tablename__ = "dieren"
     id = Column(Integer, primary_key=True, index=True)
-    diersoort = Column(String, unique=True)
+    diersoort = Column(String)
     hoeveelheid = Column(Integer)
     regio_id = Column(Integer, ForeignKey("regios.id"))
-    manager_id = Column(Integer, ForeignKey("managers.id"))
 
     regios = relationship("Regio", back_populates="dieren")
-    managers = relationship("Manager", back_populates="dieren")
+
 
 
 class Eigenaar(Base):

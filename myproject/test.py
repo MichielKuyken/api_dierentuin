@@ -2,3 +2,119 @@ import requests
 import json
 
 
+def test_post_manager():
+    response = requests.post('http://127.0.0.1:8000/managers/',
+                             json={"id": 1, "voornaam": "Michiel", "achternaam": "Kuyken", "manager_nummer": "M01"})
+    assert response.status_code == 200
+    assert response.json() == "Manager successfully created!"
+
+
+def test_post_regio():
+    response = requests.post('http://127.0.0.1:8000/regios/',
+                             json={"id": 1, "regionaam": "Afrika", "manager_id": 1})
+    assert response.status_code == 200
+    assert response.json() == "Regio successfully created!"
+
+def test_post_dier():
+    response = requests.post('http://127.0.0.1:8000/dieren/',
+                                 json={"id": 1, "diersoort": "Leeuwen", "hoeveelheid": 20, "regio_id": 1})
+    assert response.status_code == 200
+    assert response.json() == "Dier successfully created!"
+
+def test_get_managers():
+    response = requests.get('http://127.0.0.1:8000/managers/')
+    assert response.status_code == 200
+    managers = response.json()
+    for manager in managers:
+        assert "id" in manager
+        assert "voornaam" in manager
+        assert "achternaam" in manager
+        assert "manager_nummer" in manager
+
+
+def test_get_manager():
+    response = requests.get('http://127.0.0.1:8000/managers/M01')
+    assert response.status_code == 200
+    manager = response.json()
+    assert "id" in manager
+    assert "voornaam" in manager
+    assert "achternaam" in manager
+    assert "manager_nummer" in manager
+
+
+def test_get_regios():
+    response = requests.get('http://127.0.0.1:8000/regios/')
+    assert response.status_code == 200
+    regios = response.json()
+    for regio in regios:
+        assert "id" in regio
+        assert "regionaam" in regio
+        assert "manager_id" in regio
+
+
+def test_get_regio():
+    response = requests.get('http://127.0.0.1:8000/regios/Afrika')
+    assert response.status_code == 200
+    regio = response.json()
+    assert "id" in regio
+    assert "regionaam" in regio
+    assert "manager_id" in regio
+
+
+def test_get_dieren():
+    response = requests.get('http://127.0.0.1:8000/dieren/')
+    assert response.status_code == 200
+    dieren = response.json()
+    for dier in dieren:
+        assert "id" in dier
+        assert "diersoort" in dier
+        assert "regio_id" in dier
+
+
+def test_get_dier():
+    response = requests.get('http://127.0.0.1:8000/dieren/Leeuwen')
+    assert response.status_code == 200
+    dier = response.json()
+    assert "id" in dier
+    assert "diersoort" in dier
+    assert "regio_id" in dier
+
+
+
+def test_put_manager():
+    response = requests.put('http://127.0.0.1:8000/managers/M01',
+                             json={"id": 1, "voornaam": "Sammie", "achternaam": "Stege", "manager_nummer": "M01"})
+    assert response.status_code == 200
+    assert response.json() == "Manager successfully updated!"
+
+
+def test_put_regio():
+    response = requests.put('http://127.0.0.1:8000/regios/Afrika',
+                             json={"id": 1, "regionaam": "Azië", "manager_id": 1})
+    assert response.status_code == 200
+    assert response.json() == "Regio successfully updated!"
+
+
+def test_put_dier():
+    response = requests.put('http://127.0.0.1:8000/dieren/Leeuwen',
+                                 json={"id": 1, "diersoort": "Leeuwen", "hoeveelheid": 25, "regio_id": 1})
+    assert response.status_code == 200
+    assert response.json() == "Dier successfully updated!"
+
+
+def test_delete_manager():
+    response = requests.delete('http://127.0.0.1:8000/managers/M01')
+    assert response.status_code == 200
+    assert response.json() == "Manager successfully deleted!"
+
+
+def test_delete_regio():
+    response = requests.delete('http://127.0.0.1:8000/regios/Azië')
+    assert response.status_code == 200
+    assert response.json() == "Regio successfully deleted!"
+
+
+def test_delete_dier():
+    response = requests.delete('http://127.0.0.1:8000/dieren/Leeuwen')
+    assert response.status_code == 200
+    assert response.json() == "Dier successfully deleted!"

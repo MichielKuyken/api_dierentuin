@@ -20,6 +20,7 @@ class Manager(ManagerBase):
 
 class RegioBase(BaseModel):
     regionaam: str
+    manager_id: int
 
 
 class RegioCreate(RegioBase):
@@ -37,7 +38,6 @@ class DierBase(BaseModel):
     diersoort: str
     hoeveelheid: int
     regio_id: int
-    manager_id: int
 
 
 class DierCreate(DierBase):
