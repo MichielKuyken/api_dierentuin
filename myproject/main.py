@@ -95,7 +95,7 @@ def delete_manager(manager_nummer: str, db: Session = Depends(get_db), token: st
     return crud.delete_manager(db=db, manager=manager)
 
 
-@app.put("/managers/{manager_nummer}", response_model=schemas.Manager)
+@app.put("/managers/{manager_nummer}")
 def update_manager(manager_nummer: str, manager_update: schemas.ManagerCreate, db: Session = Depends(get_db), token: str = Depends(oauth2_scheme)):
     current_eigenaar = auth.get_current_eigenaar(db, token)
     if not current_eigenaar:
@@ -140,7 +140,7 @@ def delete_regio(regionaam: str, db: Session = Depends(get_db), token: str = Dep
     return crud.delete_regio(db=db, regio=regio)
 
 
-@app.put("/regios/{regionaam}", response_model=schemas.Regio)
+@app.put("/regios/{regionaam}")
 def update_regio(regionaam: str, regio_update: schemas.RegioCreate, db: Session = Depends(get_db), token: str = Depends(oauth2_scheme)):
     current_eigenaar = auth.get_current_eigenaar(db, token)
     if not current_eigenaar:
@@ -185,7 +185,7 @@ def delete_dier(diersoort: str, db: Session = Depends(get_db), token: str = Depe
     return crud.delete_dier(db=db, dier=dier)
 
 
-@app.put("/dieren/{diersoort}", response_model=schemas.Dier)
+@app.put("/dieren/{diersoort}")
 def update_dier(diersoort: str, dier_update: schemas.DierCreate, db: Session = Depends(get_db), token: str = Depends(oauth2_scheme)):
     current_eigenaar = auth.get_current_eigenaar(db, token)
     if not current_eigenaar:

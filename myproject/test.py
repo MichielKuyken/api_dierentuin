@@ -2,6 +2,22 @@ import requests
 import json
 
 
+def test_post_eigenaar():
+    response = requests.post('http://127.0.0.1:8000/eigenaar/',
+                             json={"id": 1, "voornaam": "Michiel", "achternaam": "Kuyken", "email": "test", "password": "wachtwoord"})
+    assert response.status_code == 200
+    assert response.json() == "Eigenaar successfully created!"
+
+
+def test_post_access_token():
+    response = requests.post('http://127.0.0.1:8000/token', json={"username": "test", "password": "wachtwoord"})
+    assert response.status_code == 200
+    acces_token = response.json()["access_token"]
+    return acces_token
+
+
+
+
 def test_post_manager():
     response = requests.post('http://127.0.0.1:8000/managers/',
                              json={"id": 1, "voornaam": "Michiel", "achternaam": "Kuyken", "manager_nummer": "M01"})
@@ -82,39 +98,54 @@ def test_get_dier():
 
 
 def test_put_manager():
+    access_token = test_post_access_token()
+    headers = {"Authorization": f"Bearer {access_token}"}
     response = requests.put('http://127.0.0.1:8000/managers/M01',
-                             json={"id": 1, "voornaam": "Sammie", "achternaam": "Stege", "manager_nummer": "M01"})
+                            json={"id": 1, "voornaam": "Sammie", "achternaam": "Stege", "manager_nummer": "M01"},
+                            headers=headers)
     assert response.status_code == 200
     assert response.json() == "Manager successfully updated!"
 
 
 def test_put_regio():
+    access_token = test_post_access_token()
+    headers = {"Authorization": f"Bearer {access_token}"}
     response = requests.put('http://127.0.0.1:8000/regios/Afrika',
-                             json={"id": 1, "regionaam": "Azië", "manager_id": 1})
+                            json={"id": 1, "regionaam": "Azië", "manager_id": 1},
+                            headers=headers)
     assert response.status_code == 200
     assert response.json() == "Regio successfully updated!"
 
 
 def test_put_dier():
+    access_token = test_post_access_token()
+    headers = {"Authorization": f"Bearer {access_token}"}
     response = requests.put('http://127.0.0.1:8000/dieren/Leeuwen',
-                                 json={"id": 1, "diersoort": "Leeuwen", "hoeveelheid": 25, "regio_id": 1})
+                            json={"id": 1, "diersoort": "Leeuwen", "hoeveelheid": 25, "regio_id": 1},
+                            headers=headers)
     assert response.status_code == 200
     assert response.json() == "Dier successfully updated!"
 
 
 def test_delete_manager():
-    response = requests.delete('http://127.0.0.1:8000/managers/M01')
+    access_token = test_post_access_token()
+    headers = {"Authorization": f"Bearer {access_token}"}
+    response = requests.delete('http://127.0.0.1:8000/managers/M01', headers=headers)
     assert response.status_code == 200
     assert response.json() == "Manager successfully deleted!"
 
 
 def test_delete_regio():
-    response = requests.delete('http://127.0.0.1:8000/regios/Azië')
+    access_token = test_post_access_token()
+    headers = {"Authorization": f"Bearer {access_token}"}
+    response = requests.delete('http://127.0.0.1:8000/regios/Azië', headers=headers)
     assert response.status_code == 200
     assert response.json() == "Regio successfully deleted!"
 
 
 def test_delete_dier():
-    response = requests.delete('http://127.0.0.1:8000/dieren/Leeuwen')
+    access_token = test_post_access_token()
+    headers = {"Authorization": f"Bearer {access_token}"}
+    response = requests.delete('http://127.0.0.1:8000/dieren/Leeuwen', headers=headers)
     assert response.status_code == 200
     assert response.json() == "Dier successfully deleted!"
