@@ -20,20 +20,20 @@ def test_post_access_token():
 
 def test_post_manager():
     response = requests.post('http://127.0.0.1:8000/managers/',
-                             json={"id": 1, "voornaam": "Michiel", "achternaam": "Kuyken", "manager_nummer": "M01"})
+                             json={"id": 1, "voornaam": "Michiel", "achternaam": "Kuyken", "manager_nummer": "M01", "foto": "michiel.jpg"})
     assert response.status_code == 200
     assert response.json() == "Manager successfully created!"
 
 
 def test_post_regio():
     response = requests.post('http://127.0.0.1:8000/regios/',
-                             json={"id": 1, "regionaam": "Afrika", "manager_id": 1})
+                             json={"id": 1, "regionaam": "Afrika", "foto": "afrika.jpg", "manager_id": 1})
     assert response.status_code == 200
     assert response.json() == "Regio successfully created!"
 
 def test_post_dier():
     response = requests.post('http://127.0.0.1:8000/dieren/',
-                                 json={"id": 1, "diersoort": "Leeuwen", "hoeveelheid": 20, "regio_id": 1})
+                                 json={"id": 1, "diersoort": "Leeuwen", "hoeveelheid": 20, "foto": "leeuwen.jpg", "regio_id": 1})
     assert response.status_code == 200
     assert response.json() == "Dier successfully created!"
 
@@ -46,6 +46,7 @@ def test_get_managers():
         assert "voornaam" in manager
         assert "achternaam" in manager
         assert "manager_nummer" in manager
+        assert "foto" in manager
 
 
 def test_get_manager():
@@ -56,6 +57,7 @@ def test_get_manager():
     assert "voornaam" in manager
     assert "achternaam" in manager
     assert "manager_nummer" in manager
+    assert "foto" in manager
 
 
 def test_get_regios():
@@ -65,6 +67,7 @@ def test_get_regios():
     for regio in regios:
         assert "id" in regio
         assert "regionaam" in regio
+        assert "foto" in regio
         assert "manager_id" in regio
 
 
@@ -74,6 +77,7 @@ def test_get_regio():
     regio = response.json()
     assert "id" in regio
     assert "regionaam" in regio
+    assert "foto" in regio
     assert "manager_id" in regio
 
 
@@ -84,6 +88,7 @@ def test_get_dieren():
     for dier in dieren:
         assert "id" in dier
         assert "diersoort" in dier
+        assert "foto" in dier
         assert "regio_id" in dier
 
 
@@ -93,6 +98,7 @@ def test_get_dier():
     dier = response.json()
     assert "id" in dier
     assert "diersoort" in dier
+    assert "foto" in dier
     assert "regio_id" in dier
 
 
@@ -101,7 +107,7 @@ def test_put_manager():
     access_token = test_post_access_token()
     headers = {"Authorization": f"Bearer {access_token}"}
     response = requests.put('http://127.0.0.1:8000/managers/M01',
-                            json={"id": 1, "voornaam": "Sammie", "achternaam": "Stege", "manager_nummer": "M01"},
+                            json={"id": 1, "voornaam": "Sammie", "achternaam": "Stege", "manager_nummer": "M01", "foto": "sammie.jpg"},
                             headers=headers)
     assert response.status_code == 200
     assert response.json() == "Manager successfully updated!"
@@ -111,7 +117,7 @@ def test_put_regio():
     access_token = test_post_access_token()
     headers = {"Authorization": f"Bearer {access_token}"}
     response = requests.put('http://127.0.0.1:8000/regios/Afrika',
-                            json={"id": 1, "regionaam": "Azië", "manager_id": 1},
+                            json={"id": 1, "regionaam": "Azië", "foto": "azie.jpg", "manager_id": 1},
                             headers=headers)
     assert response.status_code == 200
     assert response.json() == "Regio successfully updated!"
@@ -121,7 +127,7 @@ def test_put_dier():
     access_token = test_post_access_token()
     headers = {"Authorization": f"Bearer {access_token}"}
     response = requests.put('http://127.0.0.1:8000/dieren/Leeuwen',
-                            json={"id": 1, "diersoort": "Leeuwen", "hoeveelheid": 25, "regio_id": 1},
+                            json={"id": 1, "diersoort": "Leeuwen", "hoeveelheid": 25, "foto": "leeuwen.jpg", "regio_id": 1},
                             headers=headers)
     assert response.status_code == 200
     assert response.json() == "Dier successfully updated!"

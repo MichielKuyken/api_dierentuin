@@ -5,6 +5,7 @@ class ManagerBase(BaseModel):
     voornaam: str
     achternaam: str
     manager_nummer: str
+    foto: str | None = "new_manager.jpg"
 
 
 class ManagerCreate(ManagerBase):
@@ -20,6 +21,7 @@ class Manager(ManagerBase):
 
 class RegioBase(BaseModel):
     regionaam: str
+    foto: str | None = "new_regio.jpg"
     manager_id: int
 
 
@@ -37,6 +39,7 @@ class Regio(RegioBase):
 class DierBase(BaseModel):
     diersoort: str
     hoeveelheid: int
+    foto: str | None = "new_dier.jpg"
     regio_id: int
 
 
