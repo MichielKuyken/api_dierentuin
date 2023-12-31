@@ -13,81 +13,81 @@ Ik heb ook een front-end gemaakt, dat gebruikt kan worden als informatie pagina 
 ## Postman requests screenshots
 Post eigenaar:
 
-![post eigenaar screenshot](/Screenshots/post_eigenaar.png)
+![post eigenaar screenshot](/screenshots/post_eigenaar.png)
 
 Delete eigenaar:
 
-![delete eigenaar screenshot](/Screenshots/delete_eigenaar.png)
+![delete eigenaar screenshot](/screenshots/delete_eigenaar.png)
 
 Eigenaar authorization:
 
-![eigenaar authorization screenshot](/Screenshots/authorization.png)
+![eigenaar authorization screenshot](/screenshots/authorization.png)
 
 Post manager:
 
-![post manager screenshot](/Screenshots/post_manager.png)
+![post manager screenshot](/screenshots/post_manager.png)
 
 Get managers:
 
-![get managers screenshot](/Screenshots/get_managers.png)
+![get managers screenshot](/screenshots/get_managers.png)
 
 Get manager by manager nummer:
 
-![get manager by_managernummer_screenshot](/Screenshots/get_manager_by_managernummer.png)
+![get manager by_managernummer_screenshot](/screenshots/get_manager_by_managernummer.png)
 
 Put manager:
 
-![put manager screenshot](/Screenshots/put_manager.png)
+![put manager screenshot](/screenshots/put_manager.png)
 
 Delete manager:
 
-![delete manager screenshot](/Screenshots/delete_manager.png)
+![delete manager screenshot](/screenshots/delete_manager.png)
 
 Post regio:
 
-![post regio screenshot](/Screenshots/post_regio.png)
+![post regio screenshot](/screenshots/post_regio.png)
 
 Get regios:
 
-![get regios screenshot](/Screenshots/get_regios.png)
+![get regios screenshot](/screenshots/get_regios.png)
 
 Get regio by regionaam:
 
-![get regio_by_regionaam screenshot](/Screenshots/get_regio_by_regionaam.png)
+![get regio_by_regionaam screenshot](/screenshots/get_regio_by_regionaam.png)
 
 Put regio:
 
-![put regio screenshot](/Screenshots/put_regio.png)
+![put regio screenshot](/screenshots/put_regio.png)
 
 Delete regio:
 
-![delete regio screenshot](/Screenshots/delete_regio.png)
+![delete regio screenshot](/screenshots/delete_regio.png)
 
 Post dier:
 
-![post dier screenshot](/Screenshots/post_dier.png)
+![post dier screenshot](/screenshots/post_dier.png)
 
 Get dieren:
 
-![get dieren screenshot](/Screenshots/get_dieren.png)
+![get dieren screenshot](/screenshots/get_dieren.png)
 
 Get dier by diersoort:
 
-![get dier_by_diersoort screenshot](/Screenshots/get_dier_by_diersoort.png)
+![get dier_by_diersoort screenshot](/screenshots/get_dier_by_diersoort.png)
 
 Get dier by regio:
 
-![get dier_by_regio screenshot](/Screenshots/get_dier_by_regio.png)
+![get dier_by_regio screenshot](/screenshots/get_dier_by_regio.png)
 
 Put regio:
 
-![put regio screenshot](/Screenshots/put_regio.png)
+![put regio screenshot](/screenshots/put_regio.png)
 
 Delete regio:
 
-![delete regio screenshot](/Screenshots/delete_regio.png)
+![delete regio screenshot](/screenshots/delete_regio.png)
 
 ## OpenAPI docs screenshots
 Docs screenshot:
 
-![docs screenshot](/Screenshots/docs_screenshot.png)
+![docs screenshot](/screenshots/docs_screenshot.png)
