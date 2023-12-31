@@ -108,6 +108,17 @@ def test_get_dier():
     assert "regio_id" in dier
 
 
+def test_get_dier_by_regio():
+    response = requests.get('http://127.0.0.1:8000/dier/1')
+    assert response.status_code == 200
+    dieren = response.json()
+    for dier in dieren:
+        assert "id" in dier
+        assert "diersoort" in dier
+        assert "foto" in dier
+        assert "regio_id" in dier
+
+
 def test_put_manager():
     access_token = test_post_access_token()
     headers = {"Authorization": f"Bearer {access_token}"}
