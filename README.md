@@ -6,7 +6,7 @@ Ik heb dit thema gekozen omdat ik samen met mijn vriendin graag naar dierentuine
 Mijn API is zo gemaakt dat iedereen gegevens kan toevoegen en opvragen. Ik heb daarom voor elke tabel een get- en post-request gemaakt zodat het mogelijk is om managers, regios en dieren toe te voegen en bekijken. Om de reeds toegevoegde gegevens aan te passen of te verwijderen moeten ze eigenaar zijn. Er is slechts 1 persoon die de eigenaar kan zijn. Als er al een eigenaar-account is aangemaakt en iemand wil een nieuw account toevoegen, is dit niet meer mogelijk. Het verwijderen van een eigenaar is ook enkel mogelijk door de eigenaar zelf. Hiervoor heb ik gebruikgemaakt van Oauth2. Voor het aanpassen van de gegevens heb ik gebruikgemaakt van een put-request.
 Ik heb ook een front-end gemaakt, dat gebruikt kan worden als informatie pagina van de dierentuin. Het geeft een overzichtelijk beeld en mensen kunnen er zowel gegevens op aanvragen als toevoegen. 
 
-[Github front-end]([https://main--fancy-faun-0a0ecd.netlify.app/](https://github.com/MichielKuyken/dierentuin_website))
+[Github front-end](https://github.com/MichielKuyken/dierentuin_website)
 
 [Netlify front-end](https://main--fancy-faun-0a0ecd.netlify.app/)
 
