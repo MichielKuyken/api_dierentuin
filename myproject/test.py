@@ -10,15 +10,25 @@ def test_post_eigenaar():
 
 
 def test_post_access_token():
-    headers = {"Content-Type": "application/json"}
+    headers = {
+        "accept": "application/json",
+        "Content-Type": "application/x-www-form-urlencoded"
+    }
+    request_data = {
+        "client_id": "",
+        "client_secret": "",
+        "scope": "",
+        "grant_type": "",
+        "refresh_token": "",
+        "username": "test",
+        "password": "wachtwoord"
+    }
     response = requests.post('http://127.0.0.1:8000/token',
-                             json={"username": "test", "password": "wachtwoord"},
+                             data=request_data,
                              headers=headers)
-    print(response.status_code)
-    print(response.json())
+    print(response.text)
     assert response.status_code == 200
     access_token = response.json()["access_token"]
-    assert access_token is not None
     return access_token
 
 

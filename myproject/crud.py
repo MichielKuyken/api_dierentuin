@@ -24,7 +24,7 @@ def create_manager(db: Session, manager: schemas.ManagerCreate):
 def delete_manager(db: Session, manager: schemas.Manager):
     db.delete(manager)
     db.commit()
-    return "Manager successfully deleted"
+    return "Manager successfully deleted!"
 
 
 def update_manager(db: Session, existing_manager: models.Manager, manager_update: schemas.ManagerCreate):
@@ -32,7 +32,7 @@ def update_manager(db: Session, existing_manager: models.Manager, manager_update
         setattr(existing_manager, key, value)
     db.commit()
     db.refresh(existing_manager)
-    return "Manager successfully updated"
+    return "Manager successfully updated!"
 
 
 def get_regio(db: Session, regionaam: str):
