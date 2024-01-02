@@ -26,7 +26,6 @@ def test_post_access_token():
     response = requests.post('http://127.0.0.1:8000/token',
                              data=request_data,
                              headers=headers)
-    print(response.text)
     assert response.status_code == 200
     access_token = response.json()["access_token"]
     return access_token
@@ -178,3 +177,12 @@ def test_delete_dier():
     response = requests.delete('http://127.0.0.1:8000/dieren/Leeuwen', headers=headers)
     assert response.status_code == 200
     assert response.json() == "Dier successfully deleted!"
+
+
+def test_delete_eigenaar():
+    access_token = test_post_access_token()
+    headers = {"Authorization": f"Bearer {access_token}"}
+    response = requests.delete('http://127.0.0.1:8000/eigenaar/test', headers=headers)
+    print(response.text)
+    assert response.status_code == 200
+    assert response.json() == "Eigenaar successfully deleted!"

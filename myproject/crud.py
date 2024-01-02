@@ -119,4 +119,4 @@ def create_eigenaar(db: Session, eigenaar: schemas.EigenaarCreate):
 def delete_eigenaar(db: Session, eigenaar: schemas.Eigenaar):
     db.delete(eigenaar)
     db.commit()
-    return "Eigenaar successfully deleted"
+    return "Eigenaar successfully deleted!"

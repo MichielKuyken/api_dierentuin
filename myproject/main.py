@@ -212,10 +212,10 @@ def create_eigenaar(eigenaar: schemas.EigenaarCreate, db: Session = Depends(get_
 
 
 @app.delete("/eigenaar/{eigenaar_email}")
-def delete_eigenaar(email: str, db: Session = Depends(get_db), token: str = Depends(oauth2_scheme)):
+def delete_eigenaar(eigenaar_email: str, db: Session = Depends(get_db), token: str = Depends(oauth2_scheme)):
     current_eigenaar = auth.get_current_eigenaar(db, token)
     if not current_eigenaar:
         raise HTTPException(status_code=404, detail="Admin not found")
-    if current_eigenaar.email != email:
+    if current_eigenaar.email != eigenaar_email:
         raise HTTPException(status_code=404, detail="Admin not found")
     return crud.delete_eigenaar(db=db, eigenaar=current_eigenaar)
